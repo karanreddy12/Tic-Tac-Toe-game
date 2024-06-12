@@ -38,8 +38,7 @@ Click on the "Run" button or press Ctrl+R.
 
 
 # Description of the Game Rules
-# Objective:  
-The goal is to be the first player to get three of your marks in a row (horizontally, vertically, or diagonally).
+Objective:  The goal is to be the first player to get three of your marks in a row (horizontally, vertically, or diagonally).
 
 Players: The game is played by two players. One player uses "X" and the other uses "O".
 
@@ -54,7 +53,7 @@ Draw: The game is a draw if all squares are filled and neither player has three 
 
 Restart: Players can restart the game at any time by clicking the "Restart" button.
 
-Additional Notes or Known Issues
+# Additional Notes or Known Issues
 UI Scaling: The UI is designed to be responsive, but scaling issues might occur on very high-resolution displays.
 Concurrency: The game currently does not handle simultaneous clicks gracefully. It is designed for sequential turns.
 Code Modularity: The current implementation focuses on simplicity and readability. Further refactoring might be needed for larger or more complex games.
