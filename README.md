@@ -16,43 +16,30 @@ Qt Creator (optional, but recommended for easy development)
 # Steps to Compile and Run
 
 Clone the Repository
+
 git clone <repository-url>
+
 cd tic-tac-toe
 
 # Open the Project in Qt Creator
 
 Launch Qt Creator.
+
 Open the tic-tac-toe.pro file.
-Build the Project
+
+# Build the Project
 
 Click on the "Build" button or press Ctrl+B.
-Run the Project
+
+# Run the Project
 
 Click on the "Run" button or press Ctrl+R.
-Alternatively, you can build and run the project using qmake and make from the command line:
 
-Navigate to the Project Directory
 
-sh
-Copy code
-cd tic-tac-toe
-Generate Makefile Using qmake
 
-sh
-Copy code
-qmake
-Build the Project Using make
-
-sh
-Copy code
-make
-Run the Executable
-
-sh
-Copy code
-./tic-tac-toe
-Description of the Game Rules
-Objective: The goal is to be the first player to get three of your marks in a row (horizontally, vertically, or diagonally).
+# Description of the Game Rules
+# Objective:  
+The goal is to be the first player to get three of your marks in a row (horizontally, vertically, or diagonally).
 
 Players: The game is played by two players. One player uses "X" and the other uses "O".
 
