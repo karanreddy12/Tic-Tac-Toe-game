@@ -42,9 +42,7 @@ Objective:  The goal is to be the first player to get three of your marks in a r
 
 Players: The game is played by two players. One player uses "X" and the other uses "O".
 
-Gameplay:
-
-Players take turns placing their marks in empty squares.
+Gameplay: Players take turns placing their marks in empty squares.
 The current player is indicated at the bottom of the window.
 The game continues until one player has three marks in a row or all squares are filled.
 Winning the Game: A player wins by placing three of their marks in a horizontal, vertical, or diagonal row.
