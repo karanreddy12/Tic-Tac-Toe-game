@@ -7,9 +7,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    initializeBoard();
     currentPlayer = "X";
-
     // Create and configure the label to display current player
     currentPlayerLabel = new QLabel("Current Player: " + currentPlayer);
     statusBar()->addWidget(currentPlayerLabel);
@@ -18,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     restartButton = new QPushButton("Restart");
     statusBar()->addWidget(restartButton);
     connect(restartButton, &QPushButton::clicked, this, &MainWindow::restartGame);
+
+    initializeBoard();
 }
 
 MainWindow::~MainWindow()
@@ -26,31 +26,43 @@ MainWindow::~MainWindow()
 
 void MainWindow::initializeBoard()
 {
+    QWidget *centralWidget = new QWidget;
     QGridLayout *layout = new QGridLayout;
+
+    board.clear();  // Clear any existing buttons
+
     for (int i = 0; i < 3; ++i) {
         QVector<QPushButton*> row;
         for (int j = 0; j < 3; ++j) {
             QPushButton *button = new QPushButton;
             button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
             button->setFont(QFont("Arial", 20));
+            button->setText("");
+            button->setEnabled(true);
             row.append(button);
             layout->addWidget(button, i, j);
             connect(button, &QPushButton::clicked, this, &MainWindow::buttonClicked);
         }
         board.append(row);
     }
-    QWidget *centralWidget = new QWidget;
+
     centralWidget->setLayout(layout);
     setCentralWidget(centralWidget);
+
+    currentPlayer = "X";
+    updateCurrentPlayerLabel();
+    printBoard(); // Display the initial state of the board
 }
 
-void MainWindow::clearBoard()
+void MainWindow::printBoard()
 {
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            board[i][j]->setText("");
-            board[i][j]->setEnabled(true);
+    qDebug() << "Current state of the board:";
+    for (const auto &row : board) {
+        QStringList rowText;
+        for (const auto &button : row) {
+            rowText.append(button->text().isEmpty() ? "-" : button->text());
         }
+        qDebug() << rowText.join(" ");
     }
 }
 
@@ -58,8 +70,8 @@ void MainWindow::buttonClicked()
 {
     QPushButton *button = qobject_cast<QPushButton*>(sender());
     if (button) {
-        button->setText(currentPlayer);
-        button->setEnabled(false);
+        playerMove(button); // Handle player's move input and update the board
+        printBoard(); // Display the state of the board after each move
         if (checkWin()) {
             QMessageBox::information(this, "Tic Tac Toe", "Player " + currentPlayer + " wins!");
             restartGame();
@@ -67,10 +79,21 @@ void MainWindow::buttonClicked()
             QMessageBox::information(this, "Tic Tac Toe", "It's a draw!");
             restartGame();
         } else {
-            currentPlayer = (currentPlayer == "X") ? "O" : "X";
-            updateCurrentPlayerLabel();
+            switchPlayer(); // Switch turns between players
         }
     }
+}
+
+void MainWindow::playerMove(QPushButton *button)
+{
+    button->setText(currentPlayer);
+    button->setEnabled(false);
+}
+
+void MainWindow::switchPlayer()
+{
+    currentPlayer = (currentPlayer == "X") ? "O" : "X";
+    updateCurrentPlayerLabel();
 }
 
 void MainWindow::updateCurrentPlayerLabel()
@@ -119,7 +142,5 @@ bool MainWindow::checkDraw()
 
 void MainWindow::restartGame()
 {
-    clearBoard();
-    currentPlayer = "X";
-    updateCurrentPlayerLabel();
+    initializeBoard();
 }
