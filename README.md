@@ -19,7 +19,7 @@ Clone the Repository
 
 git clone <repository-url>
 
-cd Tic-Tac-Toe
+cd Tic-Tac-Toe-game
 
 # Open the Project in Qt Creator
 
@@ -61,5 +61,10 @@ Concurrency: The game currently does not handle simultaneous clicks gracefully. 
 Code Modularity: The current implementation focuses on simplicity and readability. Further refactoring might be needed for larger or more complex games.
 
 Error Handling: Basic input validation is in place, but more extensive error handling and user feedback could be added.
+
+
+
+
+
 
 Feel free to contribute to the project by opening issues or submitting pull requests to address any bugs or enhance functionality.
