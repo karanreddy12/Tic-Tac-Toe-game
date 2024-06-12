@@ -25,7 +25,7 @@ cd Tic-Tac-Toe
 
 Launch Qt Creator.
 
-Open the tic-tac-toe.pro file.
+Open the toe.pro file.
 
 # Build the Project
 
