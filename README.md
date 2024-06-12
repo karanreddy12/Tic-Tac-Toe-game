@@ -19,7 +19,7 @@ Clone the Repository
 
 git clone <repository-url>
 
-cd tic-tac-toe
+cd Tic-Tac-Toe
 
 # Open the Project in Qt Creator
 
